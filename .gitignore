@@ -1,0 +1,7 @@
+*.DS_Store
+/src/*.aux
+/src/*.log
+/src/*.out
+/src/*.toc
+/src/*.pdf
+/src/*.gz

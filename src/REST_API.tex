@@ -1,0 +1,149 @@
+\documentclass[14pt,a4paper,report]{report}
+\usepackage[a4paper, mag=1000, left=2.5cm, right=1cm, top=2cm, bottom=2cm, headsep=0.7cm, footskip=1cm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{indentfirst}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[colorlinks]{hyperref}
+\usepackage{listings} 
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{graphicx}
+\hypersetup{
+	colorlinks = true,
+	linkcolor  = black
+}
+
+\usepackage{titlesec}
+\titleformat{\chapter}
+{\Large\bfseries} % format
+{}                % label
+{0pt}             % sep
+{\huge}           % before-code
+
+\definecolor{codeColor}{RGB}{246, 248, 250}
+\definecolor{titleColor}{RGB}{240, 237, 252}
+
+\DeclareCaptionFont{white}{\color{white}} 
+
+% Listing description
+\usepackage{listings} 
+\DeclareCaptionFormat{listing}{\colorbox{gray}{\parbox{\textwidth}{#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white}
+\lstset{ 
+	% Listing settings
+	inputencoding = utf8,			
+	extendedchars = \true, 
+	keepspaces = true, 			  	 % Поддержка кириллицы и пробелов в комментариях
+	language = Java,            	 	 % Язык программирования (для подсветки)
+	stepnumber = 1,               	 % Размер шага между двумя номерами строк
+	numbersep = 5pt,              	 % Как далеко отстоят номера строк от подсвечиваемого кода
+	backgroundcolor = \color{codeColor}, % Цвет фона подсветки - используем \usepackage{color}
+	showspaces = false,           	 % Показывать или нет пробелы специальными отступами
+	showstringspaces = false,    	 % Показывать или нет пробелы в строках
+	showtabs = false,           	 % Показывать или нет табуляцию в строках
+	tabsize = 2,                  	 % Размер табуляции по умолчанию равен 2 пробелам
+	captionpos = t,             	 % Позиция заголовка вверху [t] или внизу [b] 
+	breaklines = true,           	 % Автоматически переносить строки (да\нет)
+	breakatwhitespace = false   	 % Переносить строки только если есть пробел
+}
+
+\usepackage{tabularx}
+ \newcolumntype{b}{>{\hsize=0.2\hsize}X}
+\newcolumntype{s}{>{\hsize=0.15\hsize}X}
+\newcolumntype{m}{>{\hsize=1\hsize}X}
+\usepackage{color, colortbl}
+
+\begin{document}
+
+
+\begin{titlepage}
+\vspace*{\fill}
+    \begin{center}
+      \textbf{\Huge RESTful API}
+
+    \end{center}
+    \vspace*{\fill}
+\end{titlepage}
+
+
+\def\contentsname{Содержание}
+\tableofcontents
+\clearpage
+
+
+\part{Таблица Client}
+
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Параметры}
+GET
+
+\section*{Ответные данные}
+
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        Параметр & Тип & Описание \\  
+        
+        id & int  & Код ответа \\
+        \rowcolor{codeColor}
+        id & int  & Код ответа \\
+    \end{tabularx}
+\end{table}
+
+
+
+
+
+\section*{Коды ответов}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+\subsection*{Ответ}
+
+\begin{lstlisting}
+	$.ajax({
+    	url: "/users/1",
+    	dataType: "json",
+    	type : "GET",
+    	success : function(r) {
+      	console.log(r);
+    	}
+  	});
+\end{lstlisting}
+
+
+\chapter{getAll}
+
+
+
+\chapter{delete}
+
+
+
+\chapter{save}
+
+
+\chapter{edit}
+
+
+
+\part{Таблица SellEntre}
+\part{Таблица Product}
+\part{Таблица Type}
+\part{Таблица Sell}
+\part{Таблица ProductAvaliability}
+\part{Таблица Storage}
+\part{Таблица Stadium}
+
+
+
+\end{document}
