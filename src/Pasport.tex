@@ -37,7 +37,6 @@ localhost:9999/pasport/{pasportId}
     	\rowcolor{titleColor}
         \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
         
-
 		id & int  & Id паспортных данных сотрудника \\   \rowcolor{codeColor}
         series & int  &  Серия паспорта\\   
         number & int  & Номер паспорта \\ \rowcolor{codeColor}
@@ -54,7 +53,7 @@ localhost:9999/pasport/{pasportId}
 \subsection*{Запрос}
 
 \begin{lstlisting}
-localhost:9999/product/2
+localhost:9999/pasport/2
 \end{lstlisting}
 \hfill
 
@@ -66,11 +65,252 @@ localhost:9999/product/2
     "message": "OK",
     "data": {
         "id": 2,
-        "typeId": 1,
-        "name": "product name",
-        "decription": "product description",
-        "price": 100
+        "series": 1111,
+        "number": 222222,
+        "birthday": 95.12.12,
+        "sex": m,
+        "address": ""ул. Улица, д.1, кв. 1",
+        "editionDate": 15.01.01,
+        "editionPlace": "ТП №1 ...",
     }
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************getAll********************************************************%
+\chapter{getAll}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/allPasports
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+Отсутствуют.
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+        pasports & list  & Список паспортных данных \\   \rowcolor{codeColor}
+
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/allPasports
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code" : 200,
+	"message" : "OK" ,
+	"data": [{
+        "id": 2,
+        "series": 1111,
+        "number": 222222,
+        "birthday": 95.12.12,
+        "sex": m,
+        "address": ""ул. Улица, д.1, кв. 1",
+        "editionDate": 15.01.01,
+        "editionPlace": "ТП №1 ...",
+	},
+	{
+        "id": 2,
+        "series": 1112,
+        "number": 222221,
+        "birthday": 95.12.12,
+        "sex": m,
+        "address": ""ул. Улица, д.1, кв. 2",
+        "editionDate": 15.01.01,
+        "editionPlace": "ТП №1 ...",
+	}
+	]
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************delete********************************************************%
+\chapter{delete}
+
+\section*{Метод}
+DELETE
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/pasport/{pasportId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         pasportId & int  & Id паспортных данных \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/pasport/1
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************save********************************************************%
+\chapter{save}
+
+\section*{Метод}
+POST
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/pasport
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        series & int  &  Серия паспорта\\   \rowcolor{codeColor}
+        number & int  & Номер паспорта \\ 
+        birthday & date  &  Дата рождения \\   \rowcolor{codeColor}
+        sex & char  & Пол \\ 
+        address & string  & Адрес регистрации \\ \rowcolor{codeColor}
+        editionDate & date  &  Дата выдачи \\ 
+        editionPlace & string  &  Орган, выдавший паспорт \\   \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+	"series": 1113,
+    "number": 222223,
+    "birthday": 95.12.12,
+    "sex": m,
+    "address": ""ул. Улица, д.1, кв. 3",
+    "editionDate": 15.01.01,
+    "editionPlace": "ТП №1 ...",
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************edit********************************************************%
+\chapter{edit}
+
+\section*{Метод}
+PATCH
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/pasport
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bscm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf {Обязательно} & \textbf{Описание} \\  
+        
+        id & int  & Да & Id клиента \\ \rowcolor{codeColor}
+        series & int & Нет & Серия паспорта \\   
+        number & int & Нет & Номер паспорта \\ \rowcolor{codeColor}
+        birthday & date  & Нет &  Дата рождения \\   
+        sex & char & Нет & Пол \\ \rowcolor{codeColor}
+        address & string & Нет  & Адрес регистрации \\ 
+        editionDate & date & Нет  & Дата выдачи  \\ \rowcolor{codeColor}
+        editionPlace & string & Нет & Орган, выдавший паспорт \\  
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+	"id": 2,
+	"series": 3333
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
 }
 \end{lstlisting}
 \hfill

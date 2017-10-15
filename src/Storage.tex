@@ -51,7 +51,7 @@ localhost:9999/storage/{storageId}
 \subsection*{Запрос}
 
 \begin{lstlisting}
-localhost:9999/product/2
+localhost:9999/storage/2
 \end{lstlisting}
 \hfill
 
@@ -63,11 +63,234 @@ localhost:9999/product/2
     "message": "OK",
     "data": {
         "id": 2,
-        "typeId": 1,
-        "name": "product name",
-        "decription": "product description",
-        "price": 100
+        "coordinatesId": 1,
+        "sector": "sector A",
+        "name": "storage name",
+        "phone": "8 (999) 999-99-99"
     }
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************getAll********************************************************%
+\chapter{getAll}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/allStorages
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+Отсутствуют.
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+        storages & list  & Список пунктов выдачи \\   \rowcolor{codeColor}
+
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/allClients
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code" : 200,
+	"message" : "OK" ,
+	"data": [{
+        "id": 2,
+        "coordinatesId": 1,
+        "sector": "sector A",
+        "name": "storage name",
+        "phone": "8 (999) 999-99-99"
+	},
+	{
+        "id": 3,
+        "coordinatesId": 2
+        "sector": "sector B",
+        "name": "other storage name",
+        "phone": "8 (999) 999-99-91"
+	}
+	]
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************delete********************************************************%
+\chapter{delete}
+
+\section*{Метод}
+DELETE
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/storage/{storageId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         storageId & int  & Id пункта выдачи \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/storage/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************save********************************************************%
+\chapter{save}
+
+\section*{Метод}
+POST
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/storage
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        coordinatesId & int  & Id координат пункта выдачи\\   \rowcolor{codeColor}
+        sector & string  & Сектор \\ 
+        name & string  &  Наименование \\   \rowcolor{codeColor}
+        phone & string  & Телефон \\ 
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/storage
+{
+    "coordinatesId": 3
+    "sector": "sector B",
+    "name": "other_storage_name",
+    "phone": "8 (999) 999-99-90"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************edit********************************************************%
+\chapter{edit}
+
+\section*{Метод}
+PATCH
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/storage
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bscm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf {Обязательно} & \textbf{Описание} \\  
+        
+		id & int & Да & Id пункта выдачи \\   \rowcolor{codeColor}
+        coordinatesId & int & Нет & Id координат пункта выдачи\\   
+        sector & string & Нет & Сектор \\ \rowcolor{codeColor}
+        name & string & Нет &  Наименование \\   
+        phone & string & Нет & Телефон \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+	"id": 2,
+	"name": "super storage"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
 }
 \end{lstlisting}
 \hfill
