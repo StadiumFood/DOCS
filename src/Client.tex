@@ -104,7 +104,7 @@ localhost:9999/allClients
         \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
         
 
-        clients & list  & Список клиентов \\   \rowcolor{codeColor}
+        data & JSONArray  & Список клиентов \\   \rowcolor{codeColor}
 
     \end{tabularx}
 \end{table}
@@ -219,6 +219,7 @@ localhost:9999/client
         oldName & string  &  Отчество \\ \rowcolor{codeColor}
         name & string  & Имя \\   
         email & string  & Электронный адрес \\ \rowcolor{codeColor}
+        password & string & Пароль \\
     \end{tabularx}
 \end{table}
 
@@ -237,7 +238,8 @@ localhost:9999/client
 	"name": "someName",
 	"regDate ": /*Позже уточним*/,
 	"remDate": /*Позже уточним*/,
-	"email ": "myEmail"
+	"email ": "myEmail",
+	"password": "pass"
 }
 \end{lstlisting}
 \hfill
@@ -278,9 +280,10 @@ localhost:9999/client
         surName & string & Нет & Фамилия \\ \rowcolor{codeColor}
         oldName & string  & Нет &  Отчество \\   
         email & string & Нет & Электронный адрес \\ \rowcolor{codeColor}
-        regDate & datetime & Нет  & Дата регистрации учетной записи \\ 
-        remDate & datetime & Нет  & Дата удаления учетной записи  \\ \rowcolor{codeColor}
-        idValidate & bool & Нет & Признак подтверждения учетной записи \\  
+        regDate & datetime & Нет & Дата регистрации учетной записи \\ 
+        remDate & datetime & Нет & Дата удаления учетной записи  \\ \rowcolor{codeColor}
+        password & string & Нет & Пароль \\
+        idValidate & bool & Нет & Признак подтверждения учетной записи \\ \rowcolor{codeColor}
     \end{tabularx}
 \end{table}
 

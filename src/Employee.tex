@@ -105,7 +105,7 @@ localhost:9999/allEmployees
         \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
         
 
-        employees & list  & Список сотрудников \\   \rowcolor{codeColor}
+        data & JSONArray  & Список сотрудников \\   \rowcolor{codeColor}
 
     \end{tabularx}
 \end{table}
@@ -228,6 +228,7 @@ localhost:9999/employee
         email & string  &  Электронный адрес \\
         regDate & decimal  &  Дата регистрации \\   \rowcolor{codeColor}
         remDate & timestamp  & Дата удаления \\ 
+        password & string & Пароль \\ \rowcolor{codeColor}
     \end{tabularx}
 \end{table}
 
@@ -248,7 +249,8 @@ localhost:9999/employee
 	"oldName": "someOldname",
 	"email ": "someEmail",
 	"regDate ": 17.02.02,
-	"remDate": 17.03.03
+	"remDate": 17.03.03,
+	"password": "pass"
 }
 \end{lstlisting}
 \hfill
@@ -293,6 +295,7 @@ localhost:9999/employee
         email & string & Нет & Электронный адрес \\ \rowcolor{codeColor}
         regDate & decimal & Нет & Дата регистрации \\   
         remDate & timestamp & Нет & Дата удаления \\ \rowcolor{codeColor}
+        password & string & Нет & Пароль \\
     \end{tabularx}
 \end{table}
 

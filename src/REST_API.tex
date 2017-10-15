@@ -58,7 +58,31 @@
 \newcolumntype{m}{>{\hsize=1\hsize}X}
 \usepackage{color, colortbl}
 
+\usepackage{etoolbox}
+\usepackage{emptypage}
+
+\usepackage{lipsum}
+\usepackage{fancyhdr}
+
+%\fancyfoot[R]{Это простой пример верхнего колонтитула}
+\let\Oldpart\part
+\newcommand{\parttitle}{}
+\renewcommand{\part}[1]{\Oldpart{#1}\renewcommand{\parttitle}{#1}}
+
+\fancypagestyle{plain} {
+\fancyhead[LO,LE]{\textit{ \hyperref[toc]{К содержанию} }}
+\fancyhead[RO, RE]{}%\parttitle
+}
+
+%\patchcmd{\part}{plain}{empty}{}{}
+
+\pagestyle{plain}
+
+
+
+
 \begin{document}
+
 
 \begin{titlepage}
 \vspace*{\fill}
@@ -77,51 +101,62 @@
 \clearpage
 
 
-
-\part{Общая информация}
+\part{Общая информация} 
 \input{GeneralInfo.tex}
+
 
 
 \part{Таблица Client}
 \input{Client.tex}
 
 
+
 \part{Таблица Position}
 \input{Position.tex}
+
 
 
 \part{Таблица Pasport}
 \input{Pasport.tex}
 
 
+
 \part{Таблица SellEntry}
+
 
 
 \part{Таблица Product}
 \input{Product.tex}
 
 
+
 \part{Таблица Type}
 \input{Type.tex}
+
 
 
 \part{Таблица Sell}
 \input{Sell.tex}
 
 
+
 \part{Таблица ProductAvaliability}
+
 
 
 \part{Таблица Storage}
 \input{Storage.tex}
 
 
+
 \part{Таблица Coordinates}
 \input{Coordinates.tex}
 
 
+
 \part{Таблица Employee}
 \input{Employee.tex}
+
 
 
 \part{Таблица EmployeeWorks}
