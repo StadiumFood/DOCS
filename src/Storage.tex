@@ -1,0 +1,73 @@
+%************************************************************************************************************************%
+%************************************************************************************************************************%
+%********************************************************Storage********************************************************%
+%************************************************************************************************************************%
+%************************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/storage/{storageId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+         storageId & int  & Id пункта выдачи \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id пункта выдачи \\   \rowcolor{codeColor}
+        coordinatesId & int  & Id координат пункта выдачи\\   
+        sector & string  & Сектор \\ \rowcolor{codeColor}
+        name & string  &  Наименование \\   
+        phone & string  & Телефон \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/product/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 2,
+        "typeId": 1,
+        "name": "product name",
+        "decription": "product description",
+        "price": 100
+    }
+}
+\end{lstlisting}
+\hfill

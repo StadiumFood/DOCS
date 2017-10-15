@@ -1,0 +1,36 @@
+\section*{Заголовок запроса}
+\begin{lstlisting}
+[{"key":"Content-Type","value":"application/json"}]
+\end{lstlisting}
+\hfill
+
+\section*{Ответные данные}       
+    \begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        code & int  & Код ответа \\    \rowcolor{codeColor}
+        message & string  & Описание кода ответа \\
+        data & struct & Данные \\
+    \end{tabularx}
+\end{table}
+
+В некоторых запросах отсутствуют ответные данные, но код ответа и его описание все равно передаются.
+
+\section*{Коды ответных данных}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bm}
+    
+    	\rowcolor{titleColor}
+    	\textbf{Код} & \textbf{Описание} \\  
+        
+        200 & Запрос выполнен успешно \\   \rowcolor{codeColor}
+        400 & Запрос не удалось обработать из-за синтаксической ошибки \\
+        404 & Сервер не нашел ресурсов \\   \rowcolor{codeColor}
+        500 & Сервер не смог обработать запрос \\
+    \end{tabularx}
+\end{table}

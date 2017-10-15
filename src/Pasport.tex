@@ -1,0 +1,76 @@
+%************************************************************************************************************************%
+%************************************************************************************************************************%
+%********************************************************Pasport********************************************************%
+%************************************************************************************************************************%
+%************************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/pasport/{pasportId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+         pasportId & int  & Id паспортных данных сотрудника \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id паспортных данных сотрудника \\   \rowcolor{codeColor}
+        series & int  &  Серия паспорта\\   
+        number & int  & Номер паспорта \\ \rowcolor{codeColor}
+        birthday & date  &  Дата рождения \\   
+        sex & char  & Пол \\ \rowcolor{codeColor}
+        address & string  & Адрес регистрации \\ 
+        editionDate & date  &  Дата выдачи \\ \rowcolor{codeColor}
+        editionPlace & string  &  Орган, выдавший паспорт \\   
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/product/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 2,
+        "typeId": 1,
+        "name": "product name",
+        "decription": "product description",
+        "price": 100
+    }
+}
+\end{lstlisting}
+\hfill

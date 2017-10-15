@@ -1,0 +1,77 @@
+%**************************************************************************************************************************%
+%**************************************************************************************************************************%
+%********************************************************Employee********************************************************%
+%**************************************************************************************************************************%
+%**************************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/employee/{employeeId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+         employeeId & int  & Id сотрудника \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id сотрудника \\   \rowcolor{codeColor}
+        positionId & int  & Id должности \\   
+        pasportId & int  & Id паспортных данных \\ \rowcolor{codeColor}
+        name & string  &  Имя \\   
+        surName & string  & Фамилия \\ \rowcolor{codeColor}
+        oldName & string  & Отчество \\ 
+        email & string  &  Электронный адрес \\ \rowcolor{codeColor}
+        regDate & decimal  &  Дата регистрации \\   
+        remDate & timestamp  & Дата удаления \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/product/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 2,
+        "typeId": 1,
+        "name": "product name",
+        "decription": "product description",
+        "price": 100
+    }
+}
+\end{lstlisting}
+\hfill

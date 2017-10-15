@@ -1,0 +1,74 @@
+%************************************************************************************************************************%
+%************************************************************************************************************************%
+%********************************************************Product********************************************************%
+%************************************************************************************************************************%
+%************************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/product/{productId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         productId & int  & Id продукта \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id продукта \\   \rowcolor{codeColor}
+        typeId & int  & Id типа продукта \\   
+        name & string  & Наименование \\ \rowcolor{codeColor}
+        decription & string  &  Описание \\   
+        price & float  & Цена \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/product/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 2,
+        "typeId": 1,
+        "name": "product name",
+        "decription": "product description",
+        "price": 100
+    }
+}
+\end{lstlisting}
+\hfill

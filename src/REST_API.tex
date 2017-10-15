@@ -48,8 +48,12 @@
 	breakatwhitespace = false   	 % Переносить строки только если есть пробел
 }
 
+\makeatletter
+\@addtoreset{chapter}{part}
+\makeatother  
+
 \usepackage{tabularx}
- \newcolumntype{b}{>{\hsize=0.2\hsize}X}
+\newcolumntype{b}{>{\hsize=0.2\hsize}X}
 \newcolumntype{s}{>{\hsize=0.15\hsize}X}
 \newcolumntype{m}{>{\hsize=1\hsize}X}
 \usepackage{color, colortbl}
@@ -68,432 +72,59 @@
 \setcounter{page}{2}
 
 \def\contentsname{Содержание}
-\tableofcontents
+\tableofcontents \label{toc}
+%\hyperref[toc]{К содержанию}
 \clearpage
 
+
+
 \part{Общая информация}
+\input{GeneralInfo.tex}
 
-\section*{Заголовок запроса}
-\begin{lstlisting}
-[{"key":"Content-Type","value":"application/json"}]
-\end{lstlisting}
-\hfill
-
-\section*{Ответные данные}       
-    \begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-        code & int  & Код ответа \\    \rowcolor{codeColor}
-        message & string  & Описание кода ответа \\
-        data & struct & Данные \\
-    \end{tabularx}
-\end{table}
-
-\section*{Коды ответных данных}
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bm}
-    
-    	\rowcolor{titleColor}
-    	\textbf{Код} & \textbf{Описание} \\  
-        
-        200 & Запрос выполнен успешно \\   \rowcolor{codeColor}
-        400 & Запрос не удалось обработать из-за синтаксической ошибки \\
-        404 & Сервер не нашел ресурсов \\   \rowcolor{codeColor}
-        500 & Сервер не смог обработать запрос \\
-    \end{tabularx}
-\end{table}
 
 \part{Таблица Client}
+\input{Client.tex}
 
-\chapter{getById}
 
-\section*{Метод}
-GET
+\part{Таблица Position}
+\input{Position.tex}
 
-\section*{Структура запроса}
-\begin{lstlisting}
-localhost:9999/client/{userId}
-\end{lstlisting}
-\hfill
 
-\section*{Параметры запроса}
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-         userId & int  & Id клиента \\
-    \end{tabularx}
-\end{table}
+\part{Таблица Pasport}
+\input{Pasport.tex}
 
-\section*{Ответные данные}
 
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
+\part{Таблица SellEntry}
 
-        buys & list  & История покупок \\   \rowcolor{codeColor}
-        name & string  & Имя \\   
-        surName & string  & Фамилия \\ \rowcolor{codeColor}
-        oldName & string  &  Отчество \\   
-        email & string  & Электронный адрес \\ \rowcolor{codeColor}
-        regDate & datetime  & Дата регистрации учетной записи \\ 
-        remDate & datetime  & Дата удаления учетной записи  \\ \rowcolor{codeColor}
-        id & int  & Id клиента \\  
-        idValidate & bool  & Признак подтверждения учетной записи \\  \rowcolor{codeColor}
-    \end{tabularx}
-\end{table}
 
-\section*{Пример}
-
-\subsection*{Запрос}
-
-\begin{lstlisting}
-localhost:9999/client/2
-\end{lstlisting}
-\hfill
-
-\subsection*{Ответ}
-
-\begin{lstlisting}
-{
-    "code": 200,
-    "message": "OK",
-    "data": {
-        "buys": [],
-        "surName": null,
-        "oldName": null,
-        "name": "denis",
-        "regDate": null,
-        "remDate": null,
-        "id": 2,
-        "email": "myEmail"
-    }
-}
-\end{lstlisting}
-\hfill
-
-
-\chapter{getAll}
-
-\section*{Метод}
-GET
-
-\section*{Структура запроса}
-\begin{lstlisting}
-localhost:9999/client/{userId}
-\end{lstlisting}
-\hfill
-
-\section*{Параметры запроса}
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-         userId & int  & Id клиента \\
-    \end{tabularx}
-\end{table}
-
-\section*{Ответные данные}
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-
-        buys & list  & История покупок \\   \rowcolor{codeColor}
-        name & string  & Имя \\   
-        surName & string  & Фамилия \\ \rowcolor{codeColor}
-        oldName & string  &  Отчество \\   
-        email & string  & Электронный адрес \\ \rowcolor{codeColor}
-        regDate & datetime  & Дата регистрации учетной записи \\ 
-        remDate & datetime  & Дата удаления учетной записи  \\ \rowcolor{codeColor}
-        id & int  & Id клиента \\  
-        idValidate & bool  & Признак подтверждения учетной записи \\  \rowcolor{codeColor}
-    \end{tabularx}
-\end{table}
-
-\section*{Пример}
-
-\subsection*{Запрос}
-
-\begin{lstlisting}
-localhost:9999/client/2
-\end{lstlisting}
-\hfill
-
-\subsection*{Ответ}
-
-\begin{lstlisting}
-{
-    "code": 200,
-    "message": "OK",
-    "data": {
-        "buys": [],
-        "surName": null,
-        "oldName": null,
-        "name": "denis",
-        "regDate": null,
-        "remDate": null,
-        "id": 2,
-        "email": "myEmail"
-    }
-}
-\end{lstlisting}
-\hfill
-
-\chapter{delete}
-
-\section*{Метод}
-DELETE
-
-\section*{Структура запроса}
-\begin{lstlisting}
-localhost:9999/client/{userId}
-\end{lstlisting}
-\hfill
-
-\section*{Параметры запроса}
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-         userId & int  & Id клиента \\
-    \end{tabularx}
-\end{table}
-
-\section*{Ответные данные}
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-
-        buys & list  & История покупок \\   \rowcolor{codeColor}
-        name & string  & Имя \\   
-        surName & string  & Фамилия \\ \rowcolor{codeColor}
-        oldName & string  &  Отчество \\   
-        email & string  & Электронный адрес \\ \rowcolor{codeColor}
-        regDate & datetime  & Дата регистрации учетной записи \\ 
-        remDate & datetime  & Дата удаления учетной записи  \\ \rowcolor{codeColor}
-        id & int  & Id клиента \\  
-        idValidate & bool  & Признак подтверждения учетной записи \\  \rowcolor{codeColor}
-    \end{tabularx}
-\end{table}
-
-\section*{Пример}
-
-\subsection*{Запрос}
-
-\begin{lstlisting}
-localhost:9999/client/2
-\end{lstlisting}
-\hfill
-
-\subsection*{Ответ}
-
-\begin{lstlisting}
-{
-    "code": 200,
-    "message": "OK",
-    "data": {
-        "buys": [],
-        "surName": null,
-        "oldName": null,
-        "name": "denis",
-        "regDate": null,
-        "remDate": null,
-        "id": 2,
-        "email": "myEmail"
-    }
-}
-\end{lstlisting}
-\hfill
-
-
-\chapter{save}
-
-\section*{Метод}
-POST
-
-\section*{Структура запроса}
-\begin{lstlisting}
-localhost:9999/client/{userId}
-\end{lstlisting}
-\hfill
-
-\section*{Параметры запроса}
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-         userId & int  & Id клиента \\
-    \end{tabularx}
-\end{table}
-
-\section*{Ответные данные}
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-
-        buys & list  & История покупок \\   \rowcolor{codeColor}
-        name & string  & Имя \\   
-        surName & string  & Фамилия \\ \rowcolor{codeColor}
-        oldName & string  &  Отчество \\   
-        email & string  & Электронный адрес \\ \rowcolor{codeColor}
-        regDate & datetime  & Дата регистрации учетной записи \\ 
-        remDate & datetime  & Дата удаления учетной записи  \\ \rowcolor{codeColor}
-        id & int  & Id клиента \\  
-        idValidate & bool  & Признак подтверждения учетной записи \\  \rowcolor{codeColor}
-    \end{tabularx}
-\end{table}
-
-\section*{Пример}
-
-\subsection*{Запрос}
-
-\begin{lstlisting}
-localhost:9999/client/2
-\end{lstlisting}
-\hfill
-
-\subsection*{Ответ}
-
-\begin{lstlisting}
-{
-    "code": 200,
-    "message": "OK",
-    "data": {
-        "buys": [],
-        "surName": null,
-        "oldName": null,
-        "name": "denis",
-        "regDate": null,
-        "remDate": null,
-        "id": 2,
-        "email": "myEmail"
-    }
-}
-\end{lstlisting}
-\hfill
-
-
-\chapter{edit}
-
-\section*{Метод}
-PATCH
-
-\section*{Структура запроса}
-\begin{lstlisting}
-localhost:9999/client/{userId}
-\end{lstlisting}
-\hfill
-
-\section*{Параметры запроса}
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-         userId & int  & Id клиента \\
-    \end{tabularx}
-\end{table}
-
-\section*{Ответные данные}
-
-\begin{table}[htbp]
-    \centering
-    \begin{tabularx}{\textwidth}{bsm}
-    
-    	\rowcolor{titleColor}
-        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
-        
-
-        buys & list  & История покупок \\   \rowcolor{codeColor}
-        name & string  & Имя \\   
-        surName & string  & Фамилия \\ \rowcolor{codeColor}
-        oldName & string  &  Отчество \\   
-        email & string  & Электронный адрес \\ \rowcolor{codeColor}
-        regDate & datetime  & Дата регистрации учетной записи \\ 
-        remDate & datetime  & Дата удаления учетной записи  \\ \rowcolor{codeColor}
-        id & int  & Id клиента \\  
-        idValidate & bool  & Признак подтверждения учетной записи \\  \rowcolor{codeColor}
-    \end{tabularx}
-\end{table}
-
-\section*{Пример}
-
-\subsection*{Запрос}
-
-\begin{lstlisting}
-localhost:9999/client/2
-\end{lstlisting}
-\hfill
-
-\subsection*{Ответ}
-
-\begin{lstlisting}
-{
-    "code": 200,
-    "message": "OK",
-    "data": {
-        "buys": [],
-        "surName": null,
-        "oldName": null,
-        "name": "denis",
-        "regDate": null,
-        "remDate": null,
-        "id": 2,
-        "email": "myEmail"
-    }
-}
-\end{lstlisting}
-\hfill
-
-
-\part{Таблица SellEntre}
 \part{Таблица Product}
-\part{Таблица Type}
-\part{Таблица Sell}
-\part{Таблица ProductAvaliability}
-\part{Таблица Storage}
-\part{Таблица Coordinates}
-\part{Таблица Employee}
-\part{Таблица EmployeeWorks}
+\input{Product.tex}
 
+
+\part{Таблица Type}
+\input{Type.tex}
+
+
+\part{Таблица Sell}
+\input{Sell.tex}
+
+
+\part{Таблица ProductAvaliability}
+
+
+\part{Таблица Storage}
+\input{Storage.tex}
+
+
+\part{Таблица Coordinates}
+\input{Coordinates.tex}
+
+
+\part{Таблица Employee}
+\input{Employee.tex}
+
+
+\part{Таблица EmployeeWorks}
 
 
 \end{document}
