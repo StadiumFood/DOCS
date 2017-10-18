@@ -1,0 +1,297 @@
+%********************************************************************************************************************%
+%********************************************************************************************************************%
+%********************************************************Sell********************************************************%
+%********************************************************************************************************************%
+%********************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/sell/{sellId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+         sellId & int  & Id заказа \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id заказа \\   \rowcolor{codeColor}
+        employeeId & int  & Id сотрудника, который закончил заказ \\   
+        userId & int  & Id клиента \\ \rowcolor{codeColor}
+        isCompleted & bool  &  Признак завершенности заказа \\   
+        sellDate & timestamp  & Время выдачи заказа \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/sell/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 2,
+        "employeeId": 1,
+        "userId": 2,
+        "isCompleted": true,
+        "sellDate": 17.02.02
+    }
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************getAll********************************************************%
+\chapter{getAll}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/allSells
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+Отсутствуют.
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+        data & JSONArray  & Список заказов \\   \rowcolor{codeColor}
+
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/allSells
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code" : 200,
+	"message" : "OK" ,
+	"data": [{
+        "id": 2,
+        "employeeId": 1,
+        "userId": 2,
+        "isCompleted": true,
+        "sellDate": 17.02.02
+	},
+	{
+        "id": 3,
+        "employeeId": 2,
+        "userId": 3
+        "isCompleted": true,
+        "sellDate": 17.02.02
+	}
+	]
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************delete********************************************************%
+\chapter{delete}
+
+\section*{Метод}
+DELETE
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/sell/{sellId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         sellId & int  & Id заказа \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/sell/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************save********************************************************%
+\chapter{save}
+
+\section*{Метод}
+POST
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/sell
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        employeeId & int  & Id сотрудника, который закончил заказ \\   \rowcolor{codeColor}
+        userId & int  & Id клиента \\ 
+        isCompleted & bool  &  Признак завершенности заказа \\   \rowcolor{codeColor}
+        sellDate & timestamp  & Время выдачи заказа \\ 
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+    "employeeId": 2,
+    "userId": 3
+    "isCompleted": true,
+    "sellDate": 17.02.02
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************edit********************************************************%
+\chapter{edit}
+
+\section*{Метод}
+PATCH
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/sell
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bscm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf {Обязательно} & \textbf{Описание} \\  
+        
+		id & int & Да & Id заказа \\   \rowcolor{codeColor}
+        employeeId & int & Нет & Id сотрудника, который закончил заказ \\   
+        userId & int & Нет & Id клиента \\ \rowcolor{codeColor}
+        isCompleted & bool & Нет &  Признак завершенности заказа \\   
+        sellDate & timestamp & Нет & Время выдачи заказа \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/sell
+{
+	"id": 2,
+	"employeeId": 3
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill

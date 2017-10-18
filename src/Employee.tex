@@ -1,0 +1,326 @@
+%**************************************************************************************************************************%
+%**************************************************************************************************************************%
+%********************************************************Employee********************************************************%
+%**************************************************************************************************************************%
+%**************************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/employee/{employeeId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+         employeeId & int  & Id сотрудника \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id сотрудника \\   \rowcolor{codeColor}
+        positionId & int  & Id должности \\   
+        pasportId & int  & Id паспортных данных \\ \rowcolor{codeColor}
+        name & string  &  Имя \\   
+        surName & string  & Фамилия \\ \rowcolor{codeColor}
+        oldName & string  & Отчество \\ 
+        email & string  &  Электронный адрес \\ \rowcolor{codeColor}
+        regDate & decimal  &  Дата регистрации \\   
+        remDate & timestamp  & Дата удаления \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/employee/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 2,
+        "positionId": 1,
+        "pasportId": 2,
+        "name": "Name",
+        "surName": "Surname",
+        "oldName": "Oldname",
+        "email": "email",
+        "regDate": 17.01.01,
+        "remDate": 17.02.02
+    }
+}
+\end{lstlisting}
+\hfill
+
+%********************************************************getAll********************************************************%
+\chapter{getAll}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/allEmployees
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+Отсутствуют.
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+        data & JSONArray  & Список сотрудников \\   \rowcolor{codeColor}
+
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/allEmployees
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code" : 200,
+	"message" : "OK" ,
+	"data": [{
+        "id": 2,
+        "positionId": 1,
+        "pasportId": 2,
+        "name": "Name",
+        "surName": "Surname",
+        "oldName": "Oldname",
+        "email": "email",
+        "regDate": 17.01.01,
+        "remDate": 17.02.02
+	},
+	{
+        "id": 3,
+        "positionId": 2,
+        "pasportId": 3,
+        "name": "NameOther",
+        "surName": "SurnameOther",
+        "oldName": "OldnameOther",
+        "email": "emailOther",
+        "regDate": 17.01.02,
+        "remDate": 17.02.03
+	}
+	]
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************delete********************************************************%
+\chapter{delete}
+
+\section*{Метод}
+DELETE
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/employee/{employeeId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         employeeId & int  & Id сотрудника \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/employee/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************save********************************************************%
+\chapter{save}
+
+\section*{Метод}
+POST
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/employee
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        positionId & int  & Id должности \\   \rowcolor{codeColor}
+        pasportId & int  & Id паспортных данных \\ 
+        name & string  &  Имя \\   \rowcolor{codeColor}
+        surName & string  & Фамилия \\ 
+        oldName & string  & Отчество \\ \rowcolor{codeColor}
+        email & string  &  Электронный адрес \\
+        regDate & decimal  &  Дата регистрации \\   \rowcolor{codeColor}
+        remDate & timestamp  & Дата удаления \\ 
+        password & string & Пароль \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/employee
+{
+	"positionId": 2,
+	"pasportId": 3,
+	"name": "someName",
+	"surName "someSurname",
+	"oldName": "someOldname",
+	"email ": "someEmail",
+	"regDate ": 17.02.02,
+	"remDate": 17.03.03,
+	"password": "pass"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************edit********************************************************%
+\chapter{edit}
+
+\section*{Метод}
+PATCH
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/employee
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bscm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf {Обязательно} & \textbf{Описание} \\  
+        
+		id & int & Да & Id сотрудника \\   \rowcolor{codeColor}
+        positionId & int & Нет & Id должности \\   
+        pasportId & int & Нет & Id паспортных данных \\ \rowcolor{codeColor}
+        name & string & Нет & Имя \\   
+        surName & string & Нет & Фамилия \\ \rowcolor{codeColor}
+        oldName & string & Нет & Отчество \\ 
+        email & string & Нет & Электронный адрес \\ \rowcolor{codeColor}
+        regDate & decimal & Нет & Дата регистрации \\   
+        remDate & timestamp & Нет & Дата удаления \\ \rowcolor{codeColor}
+        password & string & Нет & Пароль \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/employee
+{
+	"id": 2,
+	"surName": "otherSurName"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill

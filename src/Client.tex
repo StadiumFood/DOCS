@@ -1,0 +1,314 @@
+%**********************************************************************************************************************%
+%**********************************************************************************************************************%
+%********************************************************Client********************************************************%
+%**********************************************************************************************************************%
+%**********************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/client/{userId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         userId & int  & Id клиента \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id клиента \\   \rowcolor{codeColor}
+        name & string  & Имя \\   
+        surName & string  & Фамилия \\ \rowcolor{codeColor}
+        oldName & string  &  Отчество \\   
+        email & string  & Электронный адрес \\ \rowcolor{codeColor}
+        regDate & datetime  & Дата регистрации учетной записи \\ 
+        remDate & datetime  & Дата удаления учетной записи  \\ \rowcolor{codeColor}
+        idValidate & bool  & Признак подтверждения учетной записи \\
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "surName": null,
+        "oldName": null,
+        "name": "denis",
+        "regDate": null,
+        "remDate": null,
+        "id": 2,
+        "email": "myEmail"
+    }
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************getAll********************************************************%
+\chapter{getAll}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/allClients
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+Отсутствуют.
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+        data & JSONArray  & Список клиентов \\   \rowcolor{codeColor}
+
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/allClients
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code" : 200,
+	"message" : "OK" ,
+	"data": [{
+		"surName": "someSurName",
+		"oldName": "someOldName",
+		"name": "someName",
+		"regDate ": /*Позже уточним*/,
+		"remDate": /*Позже уточним*/,
+		"id": 1 ,
+		"email ": "myEmail"
+	},
+	{
+		"surName": "someSurName",
+		"oldName": "someOldName",
+		"name": "someName",
+		"regDate ": /*Позже уточним*/,
+		"remDate": /*Позже уточним*/,
+		"id": 2 ,
+		"email ": "myEmail"
+	}
+	]
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************delete********************************************************%
+\chapter{delete}
+
+\section*{Метод}
+DELETE
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/client/{userId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         userId & int  & Id клиента \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************save********************************************************%
+\chapter{save}
+
+\section*{Метод}
+POST
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/client
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        surName & string  & Фамилия \\ 
+        oldName & string  &  Отчество \\ \rowcolor{codeColor}
+        name & string  & Имя \\   
+        email & string  & Электронный адрес \\ \rowcolor{codeColor}
+        password & string & Пароль \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+	"surName": "someSurName",
+	"oldName": "someOldName",
+	"name": "someName",
+	"regDate ": /*Позже уточним*/,
+	"remDate": /*Позже уточним*/,
+	"email ": "myEmail",
+	"password": "pass"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************edit********************************************************%
+\chapter{edit}
+
+\section*{Метод}
+PATCH
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/client
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bscm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf {Обязательно} & \textbf{Описание} \\  
+        
+        id & int  & Да & Id клиента \\ \rowcolor{codeColor}
+        name & string & Нет & Имя \\   
+        surName & string & Нет & Фамилия \\ \rowcolor{codeColor}
+        oldName & string  & Нет &  Отчество \\   
+        email & string & Нет & Электронный адрес \\ \rowcolor{codeColor}
+        regDate & datetime & Нет & Дата регистрации учетной записи \\ 
+        remDate & datetime & Нет & Дата удаления учетной записи  \\ \rowcolor{codeColor}
+        password & string & Нет & Пароль \\
+        idValidate & bool & Нет & Признак подтверждения учетной записи \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+	"id": 2,
+	"surName": "otherSurName"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill

@@ -1,0 +1,310 @@
+%*****************************************************************************************************************************%
+%*****************************************************************************************************************************%
+%********************************************************Coordinates********************************************************%
+%*****************************************************************************************************************************%
+%*****************************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/coord/{coordId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+         coordId & int  & Id набора координат \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf{Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id набора координат \\   \rowcolor{codeColor}
+        latitudeDeg & int  & Градусы широты \\   
+        latitudeMin & int  & Минуты широты \\ \rowcolor{codeColor}
+        latitudeSec & decimal  &  Секунды широты \\   
+        longitudeDeg & int  & Градусы долготы \\ \rowcolor{codeColor}
+        longitudeMin & int  & Минуты долготы \\ 
+        longitudeSec & decimal  &  Секунды долготы \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/coord/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 2,
+        "latitudeDeg": 1,
+        "latitudeMin": 5
+        "latitudeSec": 3.1
+        "latitudeDeg": 5
+        "latitudeMin": 8
+        "latitudeSec": 11.5
+    }
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************getAll********************************************************%
+\chapter{getAll}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/allCoord
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+Отсутствуют.
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+        data & JSONArray  & Список координат \\   \rowcolor{codeColor}
+
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/allCoord
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code" : 200,
+	"message" : "OK" ,
+	"data": [{
+        "id": 2,
+        "latitudeDeg": 1,
+        "latitudeMin": 5
+        "latitudeSec": 3.1
+        "latitudeDeg": 5
+        "latitudeMin": 8
+        "latitudeSec": 11.5
+	},
+	{
+        "id": 3,
+        "latitudeDeg": 1,
+        "latitudeMin": 5
+        "latitudeSec": 10.1
+        "latitudeDeg": 5
+        "latitudeMin": 8
+        "latitudeSec": 8.5
+	}
+	]
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************delete********************************************************%
+\chapter{delete}
+
+\section*{Метод}
+DELETE
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/coord/{coordId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         coordId & int  & Id набора координат \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/coord/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************save********************************************************%
+\chapter{save}
+
+\section*{Метод}
+POST
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/coord
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        latitudeDeg & int  & Градусы широты \\   \rowcolor{codeColor}
+        latitudeMin & int  & Минуты широты \\ 
+        latitudeSec & decimal  &  Секунды широты \\   \rowcolor{codeColor}
+        longitudeDeg & int  & Градусы долготы \\ 
+        longitudeMin & int  & Минуты долготы \\ \rowcolor{codeColor}
+        longitudeSec & decimal  &  Секунды долготы \\ 
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/coord
+{
+    "latitudeDeg": 1,
+    "latitudeMin": 5
+    "latitudeSec": 11.8
+    "latitudeDeg": 5
+    "latitudeMin": 8
+    "latitudeSec": 5.4
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************edit********************************************************%
+\chapter{edit}
+
+\section*{Метод}
+PATCH
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/coord
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bscm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf {Обязательно} & \textbf{Описание} \\  
+        
+		id & int & Да & Id набора координат \\   \rowcolor{codeColor}
+        latitudeDeg & int & Нет & Градусы широты \\   
+        latitudeMin & int & Нет & Минуты широты \\ \rowcolor{codeColor}
+        latitudeSec & decimal & Нет &  Секунды широты \\   
+        longitudeDeg & int & Нет & Градусы долготы \\ \rowcolor{codeColor}
+        longitudeMin & int & Нет & Минуты долготы \\ 
+        longitudeSec & decimal & Нет &  Секунды долготы \\ \rowcolor{codeColor}
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/coord
+{
+	"id": 2,
+	"latitudeSec": 5.1
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill

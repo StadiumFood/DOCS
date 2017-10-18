@@ -1,0 +1,276 @@
+%*********************************************************************************************************************%
+%*********************************************************************************************************************%
+%********************************************************Type********************************************************%
+%*********************************************************************************************************************%
+%*********************************************************************************************************************%
+
+
+%********************************************************getById********************************************************%
+\chapter{getById}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/type/{typeId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         typeId & int  & Id типа продукта \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+		id & int  & Id типа продукта \\   \rowcolor{codeColor}
+        name & string  & Наименование типа продукта \\   
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/product/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+    "code": 200,
+    "message": "OK",
+    "data": {
+        "id": 1,
+        "type": "some type"
+    }
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************getAll********************************************************%
+\chapter{getAll}
+
+\section*{Метод}
+GET
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/allTypes
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+Отсутствуют.
+
+\section*{Ответные данные}
+
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+
+        data & JSONArray  & Список типов продуктов \\   \rowcolor{codeColor}
+
+    \end{tabularx}
+\end{table}
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/allClients
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code" : 200,
+	"message" : "OK" ,
+	"data": [{
+        "id": 1,
+        "type": "some type 1"
+	},
+	{
+        "id": 2,
+        "type": "some type 2"
+	}
+	]
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************delete********************************************************%
+\chapter{delete}
+
+\section*{Метод}
+DELETE
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/type/{typeId}
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+         typeId & int  & Id типа продукта \\
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/type/2
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************save********************************************************%
+\chapter{save}
+
+\section*{Метод}
+POST
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/type
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bsm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf{Описание} \\  
+        
+        name & string  & Тип продукта \\ 
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+        "name": "some type 3"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
+
+
+%********************************************************edit********************************************************%
+\chapter{edit}
+
+\section*{Метод}
+PATCH
+
+\section*{Структура запроса}
+\begin{lstlisting}
+localhost:9999/type
+\end{lstlisting}
+\hfill
+
+\section*{Параметры запроса}
+\begin{table}[htbp]
+    \centering
+    \begin{tabularx}{\textwidth}{bscm}
+    
+    	\rowcolor{titleColor}
+        \textbf{Параметр} & \textbf {Тип} & \textbf {Обязательно} & \textbf{Описание} \\  
+        
+        id & int  & Да & Id клиента \\ \rowcolor{codeColor}
+        name & string & Нет & Тип продукта \\   
+    \end{tabularx}
+\end{table}
+
+\section*{Ответные данные}
+Отсутствуют.
+
+\section*{Пример}
+
+\subsection*{Запрос}
+
+\begin{lstlisting}
+localhost:9999/client
+{
+	"id": 2,
+	"name": "other_type"
+}
+\end{lstlisting}
+\hfill
+
+\subsection*{Ответ}
+
+\begin{lstlisting}
+{
+	"code": 200,
+	"message": "OK"
+}
+\end{lstlisting}
+\hfill
